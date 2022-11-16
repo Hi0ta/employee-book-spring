@@ -1,5 +1,4 @@
 package com.skypro.employee.record;
-
 public class EmployeeRequest {
     private String firstName;
     private String lastName;
@@ -21,5 +20,4 @@ public class EmployeeRequest {
     public int getSalary() {return salary;}
 
     public void setSalary(int salary) {this.salary = salary;}
-
 }

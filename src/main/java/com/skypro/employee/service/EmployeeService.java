@@ -6,10 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
-
 @Service
 public class EmployeeService {
-
     private final Map<Integer, Employee> employees = new HashMap<>();
 
     public Collection<Employee> getAllEmployees() {
