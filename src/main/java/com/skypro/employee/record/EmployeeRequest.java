@@ -1,10 +1,13 @@
 package com.skypro.employee.record;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class EmployeeRequest {
     private String firstName;
     private String lastName;
     private int department;
     private int salary;
+
 
     public String getFirstName() {return firstName;}
 

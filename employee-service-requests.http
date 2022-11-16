@@ -3,8 +3,8 @@ POST http://localhost:8080/employees
 Content-Type: application/json
 
 {
-"firstName": "Ivan",
-"lastName": "Ivanov",
+"firstName": "ivan",
+"lastName": "ivanov",
 "department":  1,
 "salary": 1000
 }
@@ -14,7 +14,7 @@ POST http://localhost:8080/employees
 Content-Type: application/json
 
 {
-  "firstName": "Petr",
+  "firstName": "Petr4",
   "lastName": "Petrov",
   "department":  2,
   "salary": 3000
