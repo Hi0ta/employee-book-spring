@@ -3,7 +3,9 @@ package com.skypro.employee.service;
 import com.skypro.employee.model.Employee;
 import com.skypro.employee.record.EmployeeRequest;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -18,10 +20,8 @@ public class EmployeeService {
     }
 
     public Employee addEmployee(EmployeeRequest employeeRequest) {
-       /* if (StringUtils.isBlank(employeeRequest.getFirstName()) || StringUtils.isBlank(employeeRequest.getLastName()) ){
-            throw new IllegalArgumentException("Employee name should be set");
-        } else */if(!StringUtils.isAlpha(employeeRequest.getFirstName()) || !StringUtils.isAlpha(employeeRequest.getLastName())){
-            throw new IllegalArgumentException("400 Bad Request");
+      if(!StringUtils.isAlpha(employeeRequest.getFirstName()) || !StringUtils.isAlpha(employeeRequest.getLastName())){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         Employee employee = new Employee(employeeRequest.getFirstName(),
                 employeeRequest.getLastName(),
