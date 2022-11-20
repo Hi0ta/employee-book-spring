@@ -6,10 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
-
 @Service
 public class EmployeeService {
-
     private final Map<Integer, Employee> employees = new HashMap<>();
 
     public Collection<Employee> getAllEmployees() {
@@ -35,17 +33,30 @@ public class EmployeeService {
                 .sum();
     }
 
-    public OptionalInt getSalaryMin() {
-       return employees.values().stream()
-                .mapToInt(Employee::getSalary)
-               .min();
+    public String getSalaryMin() {
+        return employees.values().stream()
+                .min(Comparator.comparingInt(e -> e.getSalary())).orElseThrow(() -> new RuntimeException("Value is null")).toString();
     }
 
-    public OptionalInt getSalaryMax() {
+
+//        int min = employees.values().stream()
+//                .mapToInt(Employee::getSalary)
+//                .min().getAsInt();
+//        return employees.values().stream()
+//                .filter(e -> e.getSalary() == min).collect(Collectors.toList());
+
+
+    public String getSalaryMax() {
         return employees.values().stream()
-                .mapToInt(Employee::getSalary)
-                .max();
+                .max(Comparator.comparingInt(e -> e.getSalary())).orElseThrow(()-> new RuntimeException("Value is null")).toString();
     }
+
+//        int max = employees.values().stream()
+//                .mapToInt(Employee::getSalary)
+//                .max().getAsInt();
+//        return employees.values().stream()
+//                .filter(e -> e.getSalary() == max).collect(Collectors.toList());
+
 
     public List<Employee> getHighSalary() {
         int sum = employees.values().stream()

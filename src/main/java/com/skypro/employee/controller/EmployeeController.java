@@ -36,12 +36,12 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/salary/min")
-    public OptionalInt getSalaryMin(){
+    public String getSalaryMin(){
         return this.employeeService.getSalaryMin();
     }
 
     @GetMapping("/employees/salary/max")
-    public OptionalInt getSalaryMax(){
+    public String getSalaryMax(){
         return this.employeeService.getSalaryMax();
     }
 

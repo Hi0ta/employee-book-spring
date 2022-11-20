@@ -1,5 +1,4 @@
 package com.skypro.employee.model;
-
 public class Employee {
     private static int counter;
     private final int id;
