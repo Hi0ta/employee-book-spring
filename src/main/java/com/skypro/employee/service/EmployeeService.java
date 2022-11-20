@@ -33,21 +33,30 @@ public class EmployeeService {
                 .sum();
     }
 
-    public List<Employee> getSalaryMin() {
-        int min = employees.values().stream()
-                .mapToInt(Employee::getSalary)
-                .min().getAsInt();
+    public String getSalaryMin() {
         return employees.values().stream()
-                .filter(e -> e.getSalary() == min).collect(Collectors.toList());
+                .min(Comparator.comparingInt(e -> e.getSalary())).orElseThrow(() -> new RuntimeException("Value is null")).toString();
     }
 
-    public List<Employee> getSalaryMax() {
-        int max = employees.values().stream()
-                .mapToInt(Employee::getSalary)
-                .max().getAsInt();
+
+//        int min = employees.values().stream()
+//                .mapToInt(Employee::getSalary)
+//                .min().getAsInt();
+//        return employees.values().stream()
+//                .filter(e -> e.getSalary() == min).collect(Collectors.toList());
+
+
+    public String getSalaryMax() {
         return employees.values().stream()
-                .filter(e -> e.getSalary() == max).collect(Collectors.toList());
+                .max(Comparator.comparingInt(e -> e.getSalary())).orElseThrow(()-> new RuntimeException("Value is null")).toString();
     }
+
+//        int max = employees.values().stream()
+//                .mapToInt(Employee::getSalary)
+//                .max().getAsInt();
+//        return employees.values().stream()
+//                .filter(e -> e.getSalary() == max).collect(Collectors.toList());
+
 
     public List<Employee> getHighSalary() {
         int sum = employees.values().stream()
